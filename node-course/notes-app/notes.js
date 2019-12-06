@@ -1,3 +1,4 @@
+/*eslint-disable semi */
 const fs = require('fs')
 
 const getNotes = function() {
@@ -37,11 +38,28 @@ const loadNotes = function() {
         return JSON.parse(dataJson)
     } catch (e) {
         return []
+    }
+
 }
+
+const removeNote = function(title) {
+    const notes = loadNotes()
+    
+    const notes2Save = notes.filter(function(note) {
+        return note.title !==  title
+    })
+    
+    if (notes.length === notes2Save.length) {
+        console.log('Nothing to change')
+    } else {
+        saveNotes(notes2Save)
+        console.log('Notes were updated')
+    }
 
 }
 
 module.exports = {
     getNotes: getNotes,
-    addNote : addNote
+    addNote : addNote,
+    removeNote: removeNote
 }
