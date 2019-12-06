@@ -20,9 +20,9 @@ const addNote = function(title, body) {
             body: body
         })
         saveNotes(notes)
-        console.log("Note was saved")
+        console.log(chalk.bgGreen("Note was saved"))
     } else {
-        console.log("Repeated note, not saved")
+        console.log(chalk.bgRed("Repeated note, not saved"))
     }
 
 }
