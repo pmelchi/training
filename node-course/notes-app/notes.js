@@ -1,5 +1,6 @@
 /*eslint-disable semi */
 const fs = require('fs')
+const chalk = require('chalk')
 
 const getNotes = function() {
     return 'my Notes'
@@ -50,10 +51,10 @@ const removeNote = function(title) {
     })
     
     if (notes.length === notes2Save.length) {
-        console.log('Nothing to change')
+        console.log(chalk.bgRed('Note not found'))
     } else {
         saveNotes(notes2Save)
-        console.log('Notes were updated')
+        console.log(chalk.bgGreen('Note removed'))
     }
 
 }
