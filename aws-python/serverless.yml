@@ -23,6 +23,11 @@ service: aws-python
 provider:
   name: aws
   runtime: python2.7
+  profile: serverless-admin
+  region: us-east-1
+  timeout: 2
+  memoriSize: 512
+
 
 # you can overwrite defaults here
 #  stage: dev
@@ -58,8 +63,12 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
+  hello-short-timeout:
     handler: handler.hello
+  hello-long-timeout:
+    handler: handler.hello
+    timeout: 6
+    memoriSize: 256
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
